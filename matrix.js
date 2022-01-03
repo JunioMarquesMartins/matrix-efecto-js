@@ -8,9 +8,7 @@ const   canvas = document.getElementById('canvas'),
         matrixFontSize = new Array();
 
 const   textMatrix = ['F', 'E', 'L', 'I', 'Z', 'ト', '2', '0', '2', '2', 'ウ' ];
-const   matrixColors = ['#ffffff', '#6fdb5f', '#4dd135'];
-
-
+const   matrixColors = ['#ffffff', '#6fdb5f', '#389128', '#4dd135'];
 
 Array.from(Array(60).keys()).forEach(index => {
     posX[index] = Math.floor(Math.random()*1265);
@@ -44,17 +42,10 @@ setInterval(() => {
 
 function renderText(posX, posY) {
     
-    new Array(20).fill().map((_, index) => index++).forEach(index => {
+    new Array(textMatrix.length).fill().map((_, index) => index++).forEach(index => {
 
         var textRandom = textMatrix[Math.floor(Math.random()*textMatrix.length)];
-        switch (index) {
-            case 0:
-                context.fillStyle = matrixColors[0]; break;
-            case 1:
-                context.fillStyle = matrixColors[1]; break;
-            case 2:
-                context.fillStyle = matrixColors[2]; break;
-        }
+        context.fillStyle = matrixColors[index];
         context.fillText(textRandom, posX, posY);
         posY -= matrixFontSize[index];
     });
