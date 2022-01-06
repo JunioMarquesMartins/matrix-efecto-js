@@ -18,11 +18,10 @@ Array.from(Array(60).keys()).forEach(index => {
 });
 
 setInterval(() => {
-    
     context.fillStyle = '#000';
     context.fillRect(0, 0, canvas.width, canvas.height);
-
     Array.from(Array(60).keys()).forEach(index => {
+
         context.font = matrixFontSize[index]+'px MatrixCode';
         context.textBaseline = 'top';
         context.textAlign = 'center';
@@ -31,19 +30,16 @@ setInterval(() => {
             posX[index] = Math.floor(Math.random()*canvas.width);
             posY[index] = 0;
             posYSliderDownTime[index] = Math.floor(Math.random()*10)+4;
-            matrixFontSize[index] = Math.floor(Math.random()*30)+8;
-            renderText(posX[index], posY[index]);
-        } else renderText(posX[index], posY[index]);
-        
+            matrixFontSize[index] = Math.floor(Math.random()*30)+8;renderText(posX[index], posY[index]);
+        }
+        renderText(posX[index], posY[index]);
         posY[index] += posYSliderDownTime[index];
     });
-
 }, 80);
 
 function renderText(posX, posY) {
     
     new Array(textMatrix.length).fill().map((_, index) => index++).forEach(index => {
-
         var textRandom = textMatrix[Math.floor(Math.random()*textMatrix.length)];
         context.fillStyle = matrixColors[index];
         context.fillText(textRandom, posX, posY);
